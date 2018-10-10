@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import GameEngine.GameManager;
+import Map.Map;
 import Snake.Snake;
 
 public class TestVibora {
@@ -41,5 +42,14 @@ public class TestVibora {
 		snake.moveToLeft();
 		snake.moveToMyOwnDirection();
 		Assert.assertEquals(new Point(9,10), snake.getPosition());		
+	}
+	@Test
+	public void outOfMap() {
+		Snake snake = new Snake();
+		Map map = new Map(800, 600);
+		snake.InitializeSnake(new Point(0,0));
+		snake.moveToLeft();
+		snake.moveToMyOwnDirection();
+		Assert.assertEquals(true, map.OutOfMap(snake));		
 	}
 }
