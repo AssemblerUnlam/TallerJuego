@@ -3,6 +3,7 @@ import java.awt.Point;
 import org.junit.Assert;
 import org.junit.Test;
 
+import Fruit.Fruit;
 import GameEngine.GameManager;
 import Map.Map;
 import Snake.Snake;
@@ -52,4 +53,12 @@ public class TestVibora {
 		snake.moveToMyOwnDirection();
 		Assert.assertEquals(true, map.OutOfMap(snake));		
 	}
-}
+	@Test
+	public void collideToFruit() {
+		Snake snake = new Snake();
+		Fruit fruit = new Fruit(new Point(1,0));
+		snake.InitializeSnake(new Point(0,0));
+		snake.moveToRight();
+		snake.moveToMyOwnDirection();
+		Assert.assertEquals(true, fruit.CollideTo(snake));		
+	}
