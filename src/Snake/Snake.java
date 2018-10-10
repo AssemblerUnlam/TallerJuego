@@ -125,7 +125,6 @@ public class Snake extends GameObject {
 				return true;
 			}
 		}
-		return false;
+		return this.getPosition().equals(object.getPosition());
 	}
-
 }
