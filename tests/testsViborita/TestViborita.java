@@ -62,16 +62,3 @@ public class TestVibora {
 		snake.moveToMyOwnDirection();
 		Assert.assertEquals(true, fruit.CollideTo(snake));		
 	}
-	@Test
-	public void collideTosnake() {
-		Snake snake1 = new Snake();
-		Snake snake2 = new Snake();
-		snake1.InitializeSnake(new Point(0,0));
-		snake1.moveToRight();
-		snake1.moveToMyOwnDirection();
-		snake2.InitializeSnake(new Point(2,0));
-		snake2.moveToLeft();
-		snake2.moveToMyOwnDirection();
-		Assert.assertEquals(true, snake1.CollideTo(snake2));		
-	}
-}
