@@ -9,7 +9,7 @@ import Snake.Snake;
 public class TestVibora {
 	
 	@Test
-	public void MoveToRight() {
+	public void moveToRight() {
 		Snake snake = new Snake();
 		snake.InitializeSnake(new Point(0,0));
 		snake.moveToRight();
@@ -18,7 +18,7 @@ public class TestVibora {
 	}
 	
 	@Test
-	public void MoveToDown() {
+	public void moveToDown() {
 		Snake snake = new Snake();
 		snake.InitializeSnake(new Point(0,0));
 		snake.moveToDown();
@@ -27,7 +27,7 @@ public class TestVibora {
 	}
 	
 	@Test
-	public void MoveToUp() {
+	public void moveToUp() {
 		Snake snake = new Snake();
 		snake.InitializeSnake(new Point(10,10));
 		snake.moveToUp();
@@ -35,7 +35,7 @@ public class TestVibora {
 		Assert.assertEquals(new Point(10,11), snake.getPosition());		
 	}
 	@Test
-	public void MoveToLeft() {
+	public void moveToLeft() {
 		Snake snake = new Snake();
 		snake.InitializeSnake(new Point(10,10));
 		snake.moveToLeft();
