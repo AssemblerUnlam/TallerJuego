@@ -20,7 +20,7 @@ public class Snake extends GameObject {
 		// listeners = new HashSet<ICollisionListener>();
 	}
 
-	public void InitializeSnake(Point newHead) {
+	public void initializeSnake(Point newHead) {
 		this.setPosition(newHead);
 		tailLenght = this.START_LEN;
 		snakeParts.clear();
@@ -91,10 +91,6 @@ public class Snake extends GameObject {
 		return this.snakeParts;
 	}
 
-	public void addPart(Point p) {
-		this.snakeParts.add(p);
-	}
-
 	public void addPart() {
 		Point head = this.getPosition();
 		this.snakeParts.add(new Point(head.x, head.y));
@@ -114,12 +110,11 @@ public class Snake extends GameObject {
 	}
 
 	public boolean isDead() {
-		// TODO Auto-generated method stub
 		return this.dead;
 	}
 
 	@Override
-	public boolean CollideTo(ICollide object) {
+	public boolean collideTo(ICollide object) {
 		for (Point point : snakeParts) {
 			if (point.equals(((ITangible) object).getPosition())) {
 				return true;

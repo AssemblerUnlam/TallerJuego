@@ -3,7 +3,6 @@ package Map;
 import java.awt.Point;
 import java.util.concurrent.ThreadLocalRandom;
 import Fruit.Fruit;
-import GameEngine.GameManager;
 import GameEngine.GameObject;
 import Snake.Snake;
 
@@ -34,7 +33,7 @@ public class Map {
 			return null;
 		}
 		Snake newSnake = new Snake();
-		newSnake.InitializeSnake(spawnPoints[snakesOnMap]);
+		newSnake.initializeSnake(spawnPoints[snakesOnMap]);
 		snakesOnMap++;
 		return newSnake;
 	}
@@ -52,7 +51,7 @@ public class Map {
 		return new Fruit(new Point((width / this.SCALE) / 2, (height / this.SCALE) / 2));
 	}
 	
-	public boolean OutOfMap(GameObject object)
+	public boolean outOfMap(GameObject object)
 	{
 		Point point = object.getPosition();
 		if (point.x < 0 || point.x * this.SCALE >= this.width || point.y < 0
@@ -71,7 +70,6 @@ public class Map {
 	}
 
 	public Point getResolution() {
-		// TODO Auto-generated method stub
 		return new Point(this.width,this.height);
 	}
 }

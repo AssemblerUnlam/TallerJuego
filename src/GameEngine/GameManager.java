@@ -1,11 +1,6 @@
 package GameEngine;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import java.util.ArrayList;
-
-import javax.swing.Timer;
 
 import Fruit.Fruit;
 import Map.Map;
@@ -48,14 +43,12 @@ public class GameManager {
 		System.out.println("\nMomento siguiente 5");
 		manager.nextMoment();
 
-		
 	}
 	
 	
 	public void startGame() {
 		Snake player1 = this.map.addSnake();
 		this.snakes.add(player1);
-		this.setFruit(this.map.spawnFruit());
 		System.out.println("Cabeza inicio:"+player1.getPosition().toString());
 	}
 
@@ -65,20 +58,20 @@ public class GameManager {
 		for (int i = 0; i < this.snakes.size(); i++) {
 			Snake snake = snakes.get(i);
 			snake.moveToMyOwnDirection();
-			CheckCollision(snake,i);
+			checkCollision(snake,i);
 		}
 	}
 	
 	
 	
 	//Controlo las colisiones de cada serpiente
-	private void CheckCollision(Snake currentSnake, int snakeIndex)
+	public void checkCollision(Snake currentSnake, int snakeIndex)
 	{
-		if (this.map.OutOfMap(currentSnake)) {
+		if (this.map.outOfMap(currentSnake)) {
 			currentSnake.killSnake();
 		}
 
-		if (currentFruit.CollideTo(currentSnake)) {
+		if (currentFruit.collideTo(currentSnake)) {
 			currentSnake.incTail();
 			this.setFruit(this.map.spawnFruit());
 		}
@@ -89,13 +82,13 @@ public class GameManager {
 			}
 			
 			Snake snake = snakes.get(i);
-			if (snake.CollideTo(currentSnake)) {
+			if (snake.collideTo(currentSnake)) {
 				return;
 			}
 		}
 	}
 	
-	private void setFruit(Fruit fruit)
+	public void setFruit(Fruit fruit)
 	{
 		this.currentFruit = fruit;	
 	}

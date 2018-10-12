@@ -28,11 +28,12 @@ public class TestViborita {
 		map = new Map(1000, 1000);
 		map2 = new Map(800, 600);
 		fruit = new Fruit(new Point(1,0));
+		game.setFruit(fruit);
 	}
 	
 	@Test
 	public void moveToRight(){
-		snake.InitializeSnake(new Point(0,0));
+		snake.initializeSnake(new Point(0,0));
 		snake.moveToRight();
 		snake.moveToMyOwnDirection();
 		Assert.assertEquals(new Point(1,0), snake.getPosition());
@@ -40,7 +41,7 @@ public class TestViborita {
 	
 	@Test
 	public void moveToDown() {
-		snake.InitializeSnake(new Point(0,0));
+		snake.initializeSnake(new Point(0,0));
 		snake.moveToDown();
 		snake.moveToMyOwnDirection();
 		Assert.assertEquals(new Point(0,1), snake.getPosition());		
@@ -48,7 +49,7 @@ public class TestViborita {
 	
 	@Test
 	public void moveToUp() {
-		snake.InitializeSnake(new Point(10,10));
+		snake.initializeSnake(new Point(10,10));
 		snake.moveToUp();
 		snake.moveToMyOwnDirection();
 		Assert.assertEquals(new Point(10,11), snake.getPosition());		
@@ -56,7 +57,7 @@ public class TestViborita {
 	
 	@Test
 	public void moveToLeft() {
-		snake.InitializeSnake(new Point(10,10));
+		snake.initializeSnake(new Point(10,10));
 		snake.moveToLeft();
 		snake.moveToMyOwnDirection();
 		Assert.assertEquals(new Point(9,10), snake.getPosition());		
@@ -64,7 +65,7 @@ public class TestViborita {
 	
 	@Test
 	public void noColisionaConsigoMisma() {
-		snake.InitializeSnake(new Point(50, 50));
+		snake.initializeSnake(new Point(50, 50));
 		snake.moveToRight();
 		snake.moveToMyOwnDirection();
 		snake.moveToDown();
@@ -79,58 +80,57 @@ public class TestViborita {
 	
 	@Test
 	public void intentaIrHaciaAtras() {
-		snake.InitializeSnake(new Point(10, 10));
+		snake.initializeSnake(new Point(10, 10));
 		snake.moveToUp();
 		snake.moveToMyOwnDirection();
 		Assert.assertEquals(new Point(10, 11), snake.getPosition());
 	}
 	
-//	@Test
-//	public void muereAlSalirDelMapa() {
-//		stage.addSnake();
-//		player.InitializeSnake(new Point(0 , 1000));
-//		player.moveToMyOwnDirection();
-//		game.CheckCollision(player, 1);
-//		Assert.assertEquals(true, player.isDead());
-//	}
-//	
-//	@Test
-//	public void incrementaSuTamañoAlComerUnaFruta() {
-//
-//		Snake player = new Snake();
-//		Fruit fruit = new Fruit(new Point(0, 1 ));
-//		player.InitializeSnake(new Point(0, 0));
-//		player.moveToMyOwnDirection();
-//		game.CheckCollision(player, 1);
-//		Assert.assertEquals(4, player.getTailLenght());
-//	}
+	@Test
+	public void muereAlSalirDelMapa() {
+		map.addSnake();
+		snake.initializeSnake(new Point(0 , 1000));
+		snake.moveToMyOwnDirection();
+		game.checkCollision(snake, 0);
+		Assert.assertEquals(true, snake.isDead());
+	}
+	
+	@Test
+	public void incrementaSuTamañoAlComerUnaFruta() {
+		fruit.setPosition(new Point (1, 0));
+		snake.initializeSnake(new Point(0, 0));
+		snake.moveToRight();
+		snake.moveToMyOwnDirection();
+		game.checkCollision(snake, 0);
+		Assert.assertEquals(4, snake.getTailLenght());
+	}
 	
 	@Test
 	public void outOfMap() {
 
-		snake.InitializeSnake(new Point(0,0));
+		snake.initializeSnake(new Point(0,0));
 		snake.moveToLeft();
 		snake.moveToMyOwnDirection();
-		Assert.assertEquals(true, map2.OutOfMap(snake));		
+		Assert.assertEquals(true, map2.outOfMap(snake));		
 	}
 	
 	@Test
 	public void collideToFruit() {
-		snake.InitializeSnake(new Point(0,0));
+		snake.initializeSnake(new Point(0,0));
 		snake.moveToRight();
 		snake.moveToMyOwnDirection();
-		Assert.assertEquals(true, fruit.CollideTo(snake));		
+		Assert.assertEquals(true, fruit.collideTo(snake));		
 	}
 	
 	@Test
 	public void collideTosnake() {
 
-		snake.InitializeSnake(new Point(0,0));
+		snake.initializeSnake(new Point(0,0));
 		snake.moveToRight();
 		snake.moveToMyOwnDirection();
-		snake2.InitializeSnake(new Point(2,0));
+		snake2.initializeSnake(new Point(2,0));
 		snake2.moveToLeft();
 		snake2.moveToMyOwnDirection();
-		Assert.assertEquals(true, snake.CollideTo(snake2));		
+		Assert.assertEquals(true, snake.collideTo(snake2));		
 	}
 }

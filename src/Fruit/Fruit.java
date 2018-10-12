@@ -16,8 +16,8 @@ public class Fruit extends GameObject{
 	}
 
 	@Override
-	public boolean CollideTo(ICollide object) {
-		// TODO Auto-generated method stub
+	public boolean collideTo(ICollide object) {
+		
 		if (this.getPosition().equals(((ITangible)object).getPosition())) {
 			return true;
 		}

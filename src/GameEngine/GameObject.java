@@ -2,7 +2,6 @@ package GameEngine;
 
 import java.awt.Color;
 import java.awt.Point;
-import java.util.ArrayList;
 
 public class GameObject implements ICollide {
 
@@ -36,7 +35,7 @@ public class GameObject implements ICollide {
 	}
 
 	@Override
-	public boolean CollideTo(ICollide object) {
+	public boolean collideTo(ICollide object) {
 		if (object.getPosition().equals(this.getPosition())) {
 			return true;
 		}
